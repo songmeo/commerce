@@ -3,5 +3,5 @@ from .models import Auction
 
 # Register your models here.
 class AuctionAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "price")
+    list_display = ("id", "name", "created", "price")
 admin.site.register(Auction, AuctionAdmin)

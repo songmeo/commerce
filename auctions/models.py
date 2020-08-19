@@ -8,7 +8,8 @@ class User(AbstractUser):
 
 class Auction(models.Model):
     name = models.CharField(max_length=64)
-    price = models.FloatField(default=0)
+    price = models.FloatField()
+    created = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.name} costs {self.price}"
 
