@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.urls import reverse
+from django import forms
 
 from .models import User, Auction
 
@@ -64,6 +65,27 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
+categories = (
+    (1, "Fashion"),
+    (2, "Toys"),
+    (3, "Electronics"),
+    (4, "Home"),
+    (5, "Others")
+)
+
+class CreateListingForm(forms.Form):
+    name = forms.CharField()
+    description = forms.CharField(
+        widget=forms.Textarea()
+    )
+    starting_bid = forms.FloatField()
+    image = forms.URLField(required=False)
+    category = forms.TypedChoiceField(choices = categories,
+                                    coerce = str 
+                                    )
+
 @login_required
 def create(request):
-    pass
+    return render(request, "auctions/create.html", {
+        "form": CreateListingForm()
+    })

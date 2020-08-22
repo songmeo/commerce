@@ -1,0 +1,22 @@
+{% extends 'auctions/layout.html' %}
+{% load widget_tweaks %}
+{% block body %}
+<form action="{% url 'auctions:create' %}" method="POST">
+    {% csrf_token %}
+
+    {% for hidden_field in forms.hidden_fields %}
+        {{ hidden_field }}
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+    <div class="form-group">
+        {{ field.label_tag }}
+        {% render_field field class="form-control col-md-5" %}
+    </div>
+    {% endfor %}
+    {% if error %}
+        <div class="alert alert-warning col-md-5">{{ error }}</div>
+    {% endif %}
+    <input type="submit" class="btn btn-primary" value="Create">
+</form>
+{% endblock %}
