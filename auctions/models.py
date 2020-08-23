@@ -8,9 +8,13 @@ class User(AbstractUser):
 class Auction(models.Model):
     name = models.CharField(max_length=64)
     price = models.FloatField()
+    CATEGORIES = ((1, "Fashion"), (2, "Toys"), (3, "Electronics"), (4, "Home"), (5, "Others"))
+    category = models.IntegerField(choices=CATEGORIES, default=5)
     created = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to="static/auctions", null=True)
+
     def __str__(self):
-        return f"{self.name} costs {self.price}"
+        return f"{self.name} starts at {self.price}"
 
 class Bid(models.Model):
     price = models.FloatField()

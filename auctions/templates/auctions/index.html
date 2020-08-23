@@ -8,7 +8,7 @@
         <div class="card p-2 mx-auto text-center">
             <img class="card-img img-thumbnail rounded mx-auto" style="height:25%; width:25%" src="/static/auctions/{{ auction.id }}.jpg">
             <div class="card-body">
-                <h5 class="card-title font-weight-bold">{{auction.name}}</h5>
+                <a href="{% url 'auctions:listing' auction.id %}"><h5 class="card-title font-weight-bold">{{auction.name}}</h5></a>
                 <h6 class="card-subtitle mb-2">Price: ${{auction.price}}</h6>
                 <h7 class="card-subtitle mb-2 text-muted">Created: {{auction.created}}</h7>
             </div>

@@ -1,0 +1,11 @@
+{% extends 'auctions/layout.html' %}
+{% load static %}
+{% block body %}
+<div class="card">
+    <img class="card-img-top" src="{% static 'auctions' listing.id %}">
+    <div class="card-body">
+        <h5 class="card-title">{{ listing.name }}</h5>
+        <p class="card-text">{{ listing.description }}</p>
+    </div>
+</div>
+{% endblock %}
