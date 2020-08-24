@@ -11,7 +11,8 @@ class Auction(models.Model):
     CATEGORIES = ((1, "Fashion"), (2, "Toys"), (3, "Electronics"), (4, "Home"), (5, "Others"))
     category = models.IntegerField(choices=CATEGORIES, default=5)
     created = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to="static/auctions", null=True)
+    image = models.ImageField(upload_to="auctions/",null=True)
+    description = models.TextField(max_length=1000, blank=True)
 
     def __str__(self):
         return f"{self.name} starts at {self.price}"
